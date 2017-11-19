@@ -1,13 +1,13 @@
 #import "ACStream.h"
 
 @interface ACStream()
-@property(nonatomic, strong)NSMutableArray* dataArray;
-@property(nonatomic, assign)NSInteger dataLength;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, assign) NSInteger dataLength;
 //标志位，记录位置
-@property(nonatomic, assign)NSInteger writeInnerIndex;
-@property(nonatomic, assign)NSInteger writeIndex;
-@property(nonatomic, assign)NSInteger readInnerIndex;
-@property(nonatomic, assign)NSInteger readIndex;
+@property (nonatomic, assign) NSInteger writeInnerIndex;
+@property (nonatomic, assign) NSInteger writeIndex;
+@property (nonatomic, assign) NSInteger readInnerIndex;
+@property (nonatomic, assign) NSInteger readIndex;
 @end
 
 @implementation ACStream
@@ -58,24 +58,26 @@
         NSInteger allWriteLength = 0;
         for (; basedIndex <= _writeIndex; basedIndex++) {
             NSInteger beginIndex = 0;
-            NSInteger length = (basedIndex == _writeIndex && _writeInnerIndex != -1) ? _writeInnerIndex + 1 : _dataLength;
+            NSInteger length = _dataLength;
+            NSInteger bufferLength = length;
+            
             if (firstFlag) {
                 beginIndex = basedInnerIndex + 1;
                 length = (basedIndex == _writeIndex) ? data.length : _dataLength - basedInnerIndex - 1;
-            }else{
-                if (basedIndex == _writeIndex && _writeInnerIndex == -1) {
+                firstFlag = NO;
+                bufferLength = length + basedInnerIndex + 1;
+            } else if (basedIndex == _writeIndex) {
+                if (_writeInnerIndex != -1)
+                    length = _writeInnerIndex + 1;
+                else
                     break;
-                }
             }
             
             [data getBytes:buffer + beginIndex range:NSMakeRange(allWriteLength, length)];
             allWriteLength += length;
             
             //第一个写入的data有可能是两部分组成，一个是已有的，能一个是从输入data里添加的。
-            length = firstFlag ? length + basedInnerIndex + 1 : length;
-            [_dataArray addObject:[NSData dataWithBytes:buffer length:length]];
-            
-            firstFlag = NO;
+            [_dataArray addObject:[NSData dataWithBytes:buffer length:bufferLength]];
         }
         free(buffer);
     }
@@ -119,16 +121,17 @@
     
         BOOL firstFlag = YES;
         for (; basedIndex <= endIndex; basedIndex++) {
-            NSInteger length = (basedIndex == endIndex && endInnerIndex != -1) ? endInnerIndex + 1 : _dataLength;
+            NSInteger length = _dataLength;
             NSInteger beginIndex = 0;
             
             if (firstFlag) {
                 length = (basedIndex == endIndex) ? MIN(dataLength, endInnerIndex - basedInnderIndex) : _dataLength - basedInnderIndex - 1;
                 beginIndex = basedInnderIndex + 1;
-            }else{
-                if (basedIndex == endIndex && endInnerIndex == -1) {
+            } else if (basedIndex == endIndex) {
+                if (endInnerIndex != -1)
+                    length = endInnerIndex + 1;
+                else
                     break;
-                }
             }
             
             NSData* readData = [_dataArray objectAtIndex:basedIndex + 1];
@@ -157,10 +160,5 @@
 
 - (NSInteger)size {
     return (_writeIndex - _readIndex) * _dataLength + (_writeInnerIndex - _readInnerIndex);
-}
-
--(void)dealloc {
-    [self.dataArray removeAllObjects];
-    self.dataArray = nil;
 }
 @end
