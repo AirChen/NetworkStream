@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		54F9DF011FB7FE67005222B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F9DF001FB7FE67005222B6 /* main.m */; };
 		54F9DF091FB7FE9D005222B6 /* ACStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F9DF071FB7FE9C005222B6 /* ACStream.m */; };
+		5AFB752E1FC9C4DE00B9C236 /* ACStreamTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AFB752D1FC9C4DE00B9C236 /* ACStreamTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,10 +29,20 @@
 		54F9DF001FB7FE67005222B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		54F9DF071FB7FE9C005222B6 /* ACStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACStream.m; sourceTree = "<group>"; };
 		54F9DF081FB7FE9D005222B6 /* ACStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACStream.h; sourceTree = "<group>"; };
+		5AFB752B1FC9C4DE00B9C236 /* ACStreamTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACStreamTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AFB752D1FC9C4DE00B9C236 /* ACStreamTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACStreamTest.m; sourceTree = "<group>"; };
+		5AFB752F1FC9C4DE00B9C236 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		54F9DEFA1FB7FE67005222B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AFB75281FC9C4DE00B9C236 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				54F9DEFF1FB7FE67005222B6 /* NetworkStream */,
+				5AFB752C1FC9C4DE00B9C236 /* ACStreamTest */,
 				54F9DEFE1FB7FE67005222B6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				54F9DEFD1FB7FE67005222B6 /* NetworkStream */,
+				5AFB752B1FC9C4DE00B9C236 /* ACStreamTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +78,15 @@
 				54F9DF071FB7FE9C005222B6 /* ACStream.m */,
 			);
 			path = NetworkStream;
+			sourceTree = "<group>";
+		};
+		5AFB752C1FC9C4DE00B9C236 /* ACStreamTest */ = {
+			isa = PBXGroup;
+			children = (
+				5AFB752D1FC9C4DE00B9C236 /* ACStreamTest.m */,
+				5AFB752F1FC9C4DE00B9C236 /* Info.plist */,
+			);
+			path = ACStreamTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +109,23 @@
 			productReference = 54F9DEFD1FB7FE67005222B6 /* NetworkStream */;
 			productType = "com.apple.product-type.tool";
 		};
+		5AFB752A1FC9C4DE00B9C236 /* ACStreamTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AFB75301FC9C4DE00B9C236 /* Build configuration list for PBXNativeTarget "ACStreamTest" */;
+			buildPhases = (
+				5AFB75271FC9C4DE00B9C236 /* Sources */,
+				5AFB75281FC9C4DE00B9C236 /* Frameworks */,
+				5AFB75291FC9C4DE00B9C236 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ACStreamTest;
+			productName = ACStreamTest;
+			productReference = 5AFB752B1FC9C4DE00B9C236 /* ACStreamTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -97,6 +136,10 @@
 				ORGANIZATIONNAME = Air_chen;
 				TargetAttributes = {
 					54F9DEFC1FB7FE67005222B6 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					5AFB752A1FC9C4DE00B9C236 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -115,9 +158,20 @@
 			projectRoot = "";
 			targets = (
 				54F9DEFC1FB7FE67005222B6 /* NetworkStream */,
+				5AFB752A1FC9C4DE00B9C236 /* ACStreamTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5AFB75291FC9C4DE00B9C236 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		54F9DEF91FB7FE67005222B6 /* Sources */ = {
@@ -126,6 +180,14 @@
 			files = (
 				54F9DF091FB7FE9D005222B6 /* ACStream.m in Sources */,
 				54F9DF011FB7FE67005222B6 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AFB75271FC9C4DE00B9C236 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AFB752E1FC9C4DE00B9C236 /* ACStreamTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -229,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -251,6 +313,32 @@
 			};
 			name = Release;
 		};
+		5AFB75311FC9C4DE00B9C236 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ACStreamTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = ac.ACStreamTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5AFB75321FC9C4DE00B9C236 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ACStreamTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = ac.ACStreamTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -268,6 +356,15 @@
 			buildConfigurations = (
 				54F9DF051FB7FE67005222B6 /* Debug */,
 				54F9DF061FB7FE67005222B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AFB75301FC9C4DE00B9C236 /* Build configuration list for PBXNativeTarget "ACStreamTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFB75311FC9C4DE00B9C236 /* Debug */,
+				5AFB75321FC9C4DE00B9C236 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
