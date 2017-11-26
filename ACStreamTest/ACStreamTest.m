@@ -1,11 +1,3 @@
-//
-//  ACStreamTest.m
-//  ACStreamTest
-//
-//  Created by air on 2017/11/25.
-//  Copyright © 2017年 Air_chen. All rights reserved.
-//
-
 #import <XCTest/XCTest.h>
 #import "ACStream.h"
 
@@ -28,11 +20,20 @@
 }
 
 - (void)testRead {
+    void* buffer = malloc(16 * 1024);
+    memset(buffer, 0, 16 * 1024);
     
-}
-
-- (void)testMutableThreads {
+    ACStream *stream = [[ACStream alloc] initWithItemLength:4 * 1024];
+    NSString *dataStr = @"Hello world!";
+    NSData *data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+    BOOL writeFlg = [stream write:data];
+    XCTAssertTrue(writeFlg, @"If write correct, return YES.");
     
+    NSInteger readLen = [stream read:0 withData:buffer];
+    XCTAssertTrue((readLen == 0), @"read length shouldn't be zero.");
+    
+    readLen = [stream read:data.length withData:buffer];
+    XCTAssertTrue((readLen == data.length), @"read success.");
 }
 
 @end
